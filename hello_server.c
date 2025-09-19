@@ -13,7 +13,7 @@
 
 int main() {
     int server_fd, client_fd;
-    struct sockaddr_in server_addr, client_addr; 
+    struct sockaddr_in server_addr, client_addr; // Using sockaddr_in bc it's a pre built struct containing useful shit like sin_family, sin_port, sin_addr
     socklen_t client_addr_len = sizeof(client_addr); // I have to do this because the accept function wants a pointer address at that spot
 
     // Literally just creating the socket so that it exists
@@ -66,9 +66,9 @@ int main() {
         char *response =
             "HTTP/1.1 200 OK\r\n"
             "Content-Type: text/plain\r\n"
-            "Content-Length: 12\r\n" 
+            "Content-Length: 30\r\n" 
             "\r\n"
-            "Hello World\n";
+            "Hello World from Hello_Server\n";
         
         write(client_fd, response, strlen(response));
         close(client_fd);   
